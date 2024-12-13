@@ -1,0 +1,29 @@
+reload! && VerifyAgreementPdfWorker.new.perform(Agreement.accepted.last.id)
+Reloading...
+  Agreement Load (0.7ms)  SELECT "agreements".* FROM "agreements" WHERE "agreements"."status" = $1 ORDER BY "agreements"."id" DESC LIMIT $2  [["status", "accepted"], ["LIMIT", 1]]
+  Agreement Load (0.4ms)  SELECT "agreements".* FROM "agreements" WHERE "agreements"."id" = $1 LIMIT $2  [["id", 57], ["LIMIT", 1]]
+Verifying PDF for Agreement ID: 57
+  Certificate Load (0.3ms)  SELECT "certificates".* FROM "certificates" WHERE "certificates"."certifiable_id" = $1 AND "certificates"."certifiable_type" = $2 AND "certificates"."key_usage" = $3 LIMIT $4  [["certifiable_id", 57], ["certifiable_type", "Agreement"], ["key_usage", "agreement_certification"], ["LIMIT", 1]]
+Loaded certificate for Agreement ID: 57: #<Certificate id: 194, serial_number: "F64DD6CC316CEAE6E5F2BC44945B649B", valid_from_date: "2024-12-13 15:40:33.891040000 +0100", valid_to_date: "2025-12-13 15:40:33.891067000 +0100", public_key: "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQE...", public_key_algorithm: "RSA", encrypted_private_key: "AQICAHgmf0suaRNgxw1LVi3VjOwQKfbfcUsoe53Da56fLQh1WQ...", signature_algorithm: "SHA256withRSA", issued_by_team_member_id: 134, issuer_details: "Mackan Göras (representerar Sol och Tak Dalarna AB...", key_usage: "agreement_certification", certificate_holder_name: "Sol och Tak Dalarna AB", certificate_holder_organization_number: "123456-7890", certificate_holder_email: "info@solotak.se", status: "active", revocation_reason: nil, revocation_date: nil, created_at: "2024-12-13 15:40:33.924606000 +0100", updated_at: "2024-12-13 15:40:34.378171000 +0100", certifiable_type: "Agreement", certifiable_id: 57>
+  ActiveStorage::Attachment Load (0.4ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4  [["record_id", 57], ["record_type", "Agreement"], ["name", "pdf_file"], ["LIMIT", 1]]
+  ActiveStorage::Blob Load (0.4ms)  SELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2  [["id", 593], ["LIMIT", 1]]
+  Disk Storage (0.1ms) Downloaded file from key: xro5zeps3xftajeml0nvr4j874ae
+Downloaded PDF content for Agreement ID: 57
+Initialized PdfVerifier with certificate: #<Certificate id: 194, serial_number: "F64DD6CC316CEAE6E5F2BC44945B649B", valid_from_date: "2024-12-13 15:40:33.891040000 +0100", valid_to_date: "2025-12-13 15:40:33.891067000 +0100", public_key: "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQE...", public_key_algorithm: "RSA", encrypted_private_key: "AQICAHgmf0suaRNgxw1LVi3VjOwQKfbfcUsoe53Da56fLQh1WQ...", signature_algorithm: "SHA256withRSA", issued_by_team_member_id: 134, issuer_details: "Mackan Göras (representerar Sol och Tak Dalarna AB...", key_usage: "agreement_certification", certificate_holder_name: "Sol och Tak Dalarna AB", certificate_holder_organization_number: "123456-7890", certificate_holder_email: "info@solotak.se", status: "active", revocation_reason: nil, revocation_date: nil, created_at: "2024-12-13 15:40:33.924606000 +0100", updated_at: "2024-12-13 15:40:34.378171000 +0100", certifiable_type: "Agreement", certifiable_id: 57>
+Starting verification process...
+Loaded PDF document for verification.
+Extracted metadata from PDF:
+SmartSignature: OC7F/Eyg6EEHRn7/HyQmXFRjkqpKYINraU0OZU+NNVSyxoJZ/ZXEtJKPqrtrjoF0/+g27nb4c1F8E9lKfKgTgHruCl1g93XFq9mvyWNlbsNXGCdeP7f8avAt3RNGlpU76WLgl8Enu45aMos952N+OYKcNc3qMW+W8wFy1nIKUdq3hBPSf/HOSAdCqHTROkgWnsLKN+hZ3tkBLPw1ZFBSGk0ub6YvuVA75+MlPtNFymHPkxNw9ziV6+gi+0BaCvecAM8BjtN2CZXuL/vG+6ZgTk7txOeRPRzw4ty17C5O3H2XAcjq3Jq3QGcCLDHimmzaF3Z8AriGG+lR5COQbFfeCQ==
+SmartHash: 420a7d0923c0198227f41a330a36a4419c89aa4e96b4e0224397306562287777
+SmartCertificateSerial: F64DD6CC316CEAE6E5F2BC44945B649B
+SmartIssuer: Mackan Gras (representerar Sol och Tak Dalarna AB)
+Recomputed hash during verification: 1c75be33c633a9abae674620a474dce1ebea22d931f5392c923d328dd81ff071
+Decoded signature: 8.�L�F~$&\TcJ`kiMeO5TƂYĴkt��sQ|�|z�
+                                                      ]`uūٯ�en�'^?j��F;��'Z2=�~95�1o�r�
+Qڷ��HBt�H�7��,5dPRM.o/P;�%>��ϓp8�"@Z
+��	��`NN���ܵ�N��ܚ@g,1��v|�lW�
+Encoded signature: OC7F/Eyg6EEHRn7/HyQmXFRjkqpKYINraU0OZU+NNVSyxoJZ/ZXEtJKPqrtrjoF0/+g27nb4c1F8E9lKfKgTgHruCl1g93XFq9mvyWNlbsNXGCdeP7f8avAt3RNGlpU76WLgl8Enu45aMos952N+OYKcNc3qMW+W8wFy1nIKUdq3hBPSf/HOSAdCqHTROkgWnsLKN+hZ3tkBLPw1ZFBSGk0ub6YvuVA75+MlPtNFymHPkxNw9ziV6+gi+0BaCvecAM8BjtN2CZXuL/vG+6ZgTk7txOeRPRzw4ty17C5O3H2XAcjq3Jq3QGcCLDHimmzaF3Z8AriGG+lR5COQbFfeCQ==
+❌ Signature verification failed
+❌ Hash verification failed
+❌ PDF for Agreement ID: 57 has been manipulated or is invalid.
+=> nil
